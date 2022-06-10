@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Filters>
+	<FiltersList>
+		<Filter>
+			<ProductName>Ноутбук</ProductName>
+			<BrandName>Acer</BrandName>
+			<OrderSum>10000</OrderSum>
+		</Filter>
+		<Filter>
+			<ProductName>Телефон</ProductName>
+			<BrandName>Apple</BrandName>
+			<OrderSum>80000</OrderSum>
+		</Filter>
+		<Filter>
+			<ProductName>Пк</ProductName>
+			<BrandName>ARTLINE</BrandName>
+			<OrderSum>500000</OrderSum>
+		</Filter>
+		<Filter>
+			<ProductName>Мишка</ProductName>
+			<BrandName>A4TECH</BrandName>
+			<OrderSum>2000</OrderSum>
+		</Filter>
+		<Filter>
+			<ProductName>Навушники</ProductName>
+			<BrandName>Apple</BrandName>
+			<OrderSum>9000</OrderSum>
+		</Filter>
+	</FiltersList>
+</Filters>
+

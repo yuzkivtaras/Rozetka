@@ -8,7 +8,7 @@ namespace InternetShop.Util
 {
     public static class SimilitudePrice
     {
-        public static bool MyIsTrue(string first, string second)
+        public static bool PriceTrue(string first, string second)
         {
             string numericString = "";
             foreach (char c in second)

@@ -7,10 +7,11 @@ namespace InternetShop.InitializationWebDriver;
 public class WebDriverFactory
 {
     public IWebDriver WebDriver;  
-    public virtual IWebDriver Lounch(string browserType, string startingUrl)
+    public IWebDriver Lounch(string browserType, string startingUrl)
     {
         
         var driver = CreateWebDriver(browserType);
+
         WebDriver = driver;
         driver.Navigate().GoToUrl(startingUrl);
         driver.Manage().Window.Maximize();

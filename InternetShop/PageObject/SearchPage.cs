@@ -1,81 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using InternetShop.Util;
+
 
 namespace InternetShop.PageObgject
 {
     public class SearchPage
     {
         IWebDriver driver;
+
+        private List<IWebElement> _elements = new List<IWebElement>();
+
         public SearchPage(IWebDriver driver)
         {
-            this.driver = driver;   
+            this.driver = driver;
         }
 
-        IWebElement SearchField
+        public readonly By _searchField = By.XPath("//input[@name='search']");
+        public readonly By _searchFieldBrand = By.XPath("/html/body/app-root/div/div/rz-category/div/main/rz-catalog/div/div/aside/rz-filter-stack/div[2]/div/rz-filter-searchline/div[1]/input");
+        public readonly By _nameBrand = By.XPath("//div[2]//li//a[@class='checkbox-filter__link']");
+        public readonly By _filterSorted = By.XPath("//div[@class = 'catalog-settings']//select");
+        public readonly By _categoryItem = By.XPath("//option[contains(text(), 'От дорогих к дешевым')]");
+        public readonly By _elments = By.XPath("//button[@aria-label='Купить']");
+
+        public void EnterSearchText(string searchTerm) => driver.FindElement(_searchField).SendKeys(searchTerm + Keys.Enter);
+        public void SearchBrandField() => Expectation.WaitAndFindElement(driver, _searchFieldBrand).Click();
+        public void EnterSearchBrand(string searchBrand) => driver.FindElement(_searchFieldBrand).SendKeys(searchBrand + Keys.Enter);
+        public void ChooseBrandName() => Expectation.WaitAndFindElement(driver, _nameBrand).Click();
+        public void ChooseSorted() => Expectation.WaitAndFindElement(driver, _filterSorted).Click();
+        public void ChooseCategoryItem() => Expectation.WaitAndFindElement(driver, _categoryItem).Click();
+
+        public List<IWebElement> AddElements() 
         {
-            get
-            {
-                return driver.FindElement(By.XPath("//input[@name='search']"));
-            }
-        }
-        IWebElement CategoryName
+            var elements = Expectation.WaitUntil(driver, _elments).FindElements(_elments).ToList();
+            _elements = elements;
+            return _elements;
+        } 
+
+        public IWebElement GetFirstElement()
         {
-            get
-            {
-                return driver.FindElement(By.XPath("//a[@data-id = 'HP']"));
-            }
-        }
-        IWebElement FilterSoted
-        {
-            get
-            {
-                return driver.FindElement(By.XPath("//div[@class = 'catalog-settings']//select"));
-            }
-        }
-        IWebElement CategoryItem
-        {
-            get
-            {
-                return driver.FindElement(By.XPath("//option[contains(text(), 'От дорогих к дешевым')]"));
-            }
-        }
-        IWebElement AddToCart
-        {
-            get
-            {
-                return driver.FindElement(By.XPath("//app-buy-button[@goods_id = '339200809']//button[@aria-label='Купить']"));
-            }
+            return _elements.First();
         }
 
-        public void EnterSearchText(string searchTerm)
+        public void AddToCartElement(IWebElement element)
         {
-            SearchField.SendKeys(searchTerm);
-            SearchField.SendKeys(Keys.Return);
-        }
-
-        public void ChooseCategory()
-        {
-            CategoryName.Click();
-        }
-
-        public void ChooseSorted()
-        {
-            FilterSoted.Click();
-        }
-
-        public void ChooseCategoryItem()
-        {
-            CategoryItem.Click();   
-        }
-
-        public void AddToCartItem()
-        {
-            AddToCart.Click();
+            element.Click();    
         }
     }
 }

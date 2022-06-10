@@ -11,23 +11,12 @@ namespace InternetShop
     public class BaseTest
     {
         public IWebDriver Driver;
-
-        [SetUp]
-        public void Setup()
+        public IWebDriver GetWebDriver()
         {
             WebDriverFactory driverFactory = new WebDriverFactory();
             FilterReader reader = new FilterReader();
             driverFactory.Lounch(reader.Config.BrowserType, reader.Config.StartingUrl);
-            Driver = driverFactory.WebDriver;
-            
-        } 
-    
-        public Filter GetCurrentFilter()
-        {
-            FilterReaderJson filterReaderJson = new FilterReaderJson();
-            Filter filter = filterReaderJson.ReadFilterJson();
-            Filters.SetFilter(filter);
-            return Filters.CurrentFilter;
+            return driverFactory.WebDriver;
         }
     }
 }

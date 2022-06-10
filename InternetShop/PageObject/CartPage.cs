@@ -1,37 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InternetShop.Util;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+
 
 namespace InternetShop.PageObject
 {
     public class CartPage
     {
-        IWebDriver driver;
-        private readonly By _sumProductsInCart = By.XPath("//div[@class ='cart-receipt__sum-price']//span[contains(@class,'')]");
-        public string sumProductsInCart() => driver.FindElement(_sumProductsInCart).Text;
-
+        IWebDriver driver;       
         public CartPage(IWebDriver driver)
         {
             this.driver = driver;
         }
+        private readonly By _cartButton = By.XPath("//rz-cart[@class='header-actions__component']//button[@type ='button']");
+        private readonly By _sumProductsInCart = By.XPath("//div[@class='cart-receipt__sum-price']//span[1]");
 
-        IWebElement CartButton
+        public void cart() => Expectation.WaitAndFindElement(driver, _cartButton).Click();
+        public string SumProductsInCart()
         {
-            get
-            {
-                return driver.FindElement(By.XPath("//rz-cart[@class='header-actions__component']//button[@type ='button']"));
-            }
+            var element = Expectation.WaitAndFindElement(driver, _sumProductsInCart);
+            return element.Text;
         }
-
-        public void Cart()
-        {
-            CartButton.Click(); 
-        }
-
-
     }
 }
