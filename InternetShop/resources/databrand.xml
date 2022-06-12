@@ -4,27 +4,27 @@
 		<Filter>
 			<ProductName>Ноутбук</ProductName>
 			<BrandName>Acer</BrandName>
-			<OrderSum>10000</OrderSum>
+			<OrderSum>139499</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Телефон</ProductName>
 			<BrandName>Apple</BrandName>
-			<OrderSum>80000</OrderSum>
+			<OrderSum>64999</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Пк</ProductName>
 			<BrandName>ARTLINE</BrandName>
-			<OrderSum>500000</OrderSum>
+			<OrderSum>373320</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Мишка</ProductName>
 			<BrandName>A4TECH</BrandName>
-			<OrderSum>2000</OrderSum>
+			<OrderSum>1739</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Навушники</ProductName>
 			<BrandName>Apple</BrandName>
-			<OrderSum>9000</OrderSum>
+			<OrderSum>8999</OrderSum>
 		</Filter>
 	</FiltersList>
 </Filters>

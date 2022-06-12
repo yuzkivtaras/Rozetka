@@ -20,7 +20,7 @@ namespace InternetShop.Util
                 else
                     break;
             }
-            if (Convert.ToInt32(first) < Convert.ToInt32(numericString))
+            if (Convert.ToInt32(first) == Convert.ToInt32(numericString))
             {
                 return true;
             }

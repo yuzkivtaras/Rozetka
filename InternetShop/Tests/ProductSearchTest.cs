@@ -23,8 +23,10 @@ namespace InternetShop.Tests
             searchPage.EnterSearchText(nameProduct);
             searchPage.SearchBrandField();
             searchPage.EnterSearchBrand(nameBrand);
+            System.Threading.Thread.Sleep(2000);
             searchPage.ChooseBrandName();
             searchPage.ChooseCategoryItem();
+            System.Threading.Thread.Sleep(2000);
             searchPage.AddElements();
             searchPage.AddToCartElement(searchPage.GetFirstElement());
             System.Threading.Thread.Sleep(2000);
@@ -36,7 +38,7 @@ namespace InternetShop.Tests
             string priviosPrice = cartPage.SumProductsInCart();
             string currentPrice = filter.OrderSum;
 
-            Assert.IsTrue(SimilitudePrice.PriceTrue(priviosPrice, currentPrice), "don't incorect sum product in cart");
+            Assert.IsTrue(SimilitudePrice.PriceTrue(priviosPrice, currentPrice));
 
             driver.Quit();
 
