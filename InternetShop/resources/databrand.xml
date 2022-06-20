@@ -4,7 +4,7 @@
 		<Filter>
 			<ProductName>Ноутбук</ProductName>
 			<BrandName>Acer</BrandName>
-			<OrderSum>139499</OrderSum>
+			<OrderSum>157204</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Телефон</ProductName>
@@ -19,12 +19,12 @@
 		<Filter>
 			<ProductName>Мишка</ProductName>
 			<BrandName>A4TECH</BrandName>
-			<OrderSum>1739</OrderSum>
+			<OrderSum>1605</OrderSum>
 		</Filter>
 		<Filter>
 			<ProductName>Навушники</ProductName>
 			<BrandName>Apple</BrandName>
-			<OrderSum>8999</OrderSum>
+			<OrderSum>7999</OrderSum>
 		</Filter>
 	</FiltersList>
 </Filters>

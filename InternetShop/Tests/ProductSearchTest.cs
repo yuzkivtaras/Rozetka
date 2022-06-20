@@ -3,6 +3,8 @@ using InternetShop.PageObgject;
 using InternetShop.PageObject;
 using InternetShop.Util;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
+using System;
 
 [assembly: LevelOfParallelism(3)]
 namespace InternetShop.Tests
@@ -14,11 +16,18 @@ namespace InternetShop.Tests
         [TestCaseSource(typeof(GetDataBrandFromXml), "GetData")]
         public void ProductSearch(Filter filter)
         {
+            log.Info("Test started with parametrs");
+            log.Info($"item = {filter.ProductName}, brand = {filter.BrandName}, price = {filter.OrderSum}");
+
             string nameProduct = filter.ProductName;
             string nameBrand = filter.BrandName;
 
             IWebDriver driver = GetWebDriver();
 
+            EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
+            eventDriver.ElementClicked += OnDriverElementClicked;
+            driver = eventDriver;
+          
             SearchPage searchPage = new SearchPage(driver);
             searchPage.EnterSearchText(nameProduct);
             searchPage.SearchBrandField();
@@ -42,6 +51,11 @@ namespace InternetShop.Tests
 
             driver.Quit();
 
+        }
+
+        private void OnDriverElementClicked(object? sender, WebElementEventArgs e)
+        {
+            log.Info(e.Element.ToString());
         }
     }
 
